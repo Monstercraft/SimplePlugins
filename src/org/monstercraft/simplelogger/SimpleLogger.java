@@ -8,14 +8,11 @@ import java.util.logging.SimpleFormatter;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.monstercraft.irc.ircplugin.IRCPlugin;
 import org.monstercraft.irc.ircplugin.PluginManifest;
-import org.monstercraft.irc.ircplugin.event.listeners.IRCListener;
-import org.monstercraft.irc.plugin.wrappers.IRCChannel;
-import org.monstercraft.irc.plugin.wrappers.IRCServer;
 
 //Must have a plugin manifest and extends IRC plugin for it to be a valid plugin
 //the name is the name of your plugin
 @PluginManifest(name = "Simple Logger")
-public class SimpleLogger extends IRCPlugin implements IRCListener {
+public class SimpleLogger extends IRCPlugin {
 
 	private FileHandler fh = null;
 	private String file = getCacheDirectory() + File.separator
@@ -75,36 +72,5 @@ public class SimpleLogger extends IRCPlugin implements IRCListener {
 		log("Simple Logger has started successfully.");
 		return true;
 
-	}
-
-	// Future use? :) (also prevents the cannot cast to irc listener error)
-	public void onAction(IRCChannel arg0, String arg1, String arg2) {
-	}
-
-	public void onConnect(IRCServer arg0) {
-	}
-
-	public void onDisconnect(IRCServer arg0) {
-	}
-
-	public void onJoin(IRCChannel arg0, String arg1) {
-	}
-
-	public void onKick(IRCChannel arg0, String arg1, String arg2) {
-	}
-
-	public void onMessage(IRCChannel arg0, String arg1, String arg2) {
-	}
-
-	public void onMode(IRCChannel arg0, String arg1, String arg2, String arg3) {
-	}
-
-	public void onPart(IRCChannel arg0, String arg1) {
-	}
-
-	public void onPrivateMessage(String arg0, String arg1, String arg2) {
-	}
-
-	public void onQuit(IRCChannel arg0, String arg1) {
 	}
 }
