@@ -1,5 +1,3 @@
-package org.monstercraft.simpleresponse;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
