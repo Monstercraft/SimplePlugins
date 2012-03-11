@@ -3,7 +3,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerChatEvent;
 import org.monstercraft.irc.ircplugin.IRCPlugin;
 import org.monstercraft.irc.ircplugin.PluginManifest;
 import org.monstercraft.irc.ircplugin.event.listeners.IRCListener;
@@ -13,7 +17,8 @@ import org.monstercraft.irc.plugin.wrappers.IRCServer;
 //Must have a plugin manifest and extends IRC plugin for it to be a valid plugin
 //the name is the name of your plugin
 @PluginManifest(name = "Simple Auto Responder")
-public class SimpleAutoResponder extends IRCPlugin implements IRCListener {
+public class SimpleAutoResponder extends IRCPlugin implements IRCListener,
+		Listener {
 
 	private FileConfiguration config;
 	private List<String> input;
@@ -67,6 +72,8 @@ public class SimpleAutoResponder extends IRCPlugin implements IRCListener {
 
 		// Logs in the console that we have started up successfully
 		log("Simple auto responder started.");
+		Bukkit.getPluginManager().registerEvents(this,
+				Bukkit.getPluginManager().getPlugin("MonsterIRC"));
 		return true;// True for the plugin to start, otherwise false to just
 					// kill the plugin
 	}
@@ -134,6 +141,27 @@ public class SimpleAutoResponder extends IRCPlugin implements IRCListener {
 			return false;
 		} catch (Exception e) {
 			return false;
+		}
+	}
+
+	@EventHandler
+	public void onPlayerChat(PlayerChatEvent event) {
+		// Check if the input strings
+		for (String s : input) {
+			// Get the indes of the string in the input
+			int index = input.indexOf(s);
+			// Check if the input contains the string
+			if (LineContainsWord(event.getMessage(), s)) {
+				// check for the output message
+				if (output.get(index) != null) {
+					// send the output message
+					event.getPlayer().sendMessage(output.get(index));
+				} else {
+					// The output message was null, something in the config was
+					// wrong.
+					log("Invalid configuration file for SimpleAutoResponder");
+				}
+			}
 		}
 	}
 
