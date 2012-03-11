@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -72,8 +71,7 @@ public class SimpleAutoResponder extends IRCPlugin implements IRCListener,
 
 		// Logs in the console that we have started up successfully
 		log("Simple auto responder started.");
-		Bukkit.getPluginManager().registerEvents(this,
-				Bukkit.getPluginManager().getPlugin("MonsterIRC"));
+		registerBukkitListener(this);
 		return true;// True for the plugin to start, otherwise false to just
 					// kill the plugin
 	}
