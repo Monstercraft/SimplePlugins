@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.monstercraft.irc.ircplugin.IRCPlugin;
@@ -126,7 +127,7 @@ public class SimpleAutoResponder extends IRCPlugin implements IRCListener,
 	}
 
 	@Override
-	public void onPrivateMessage(String arg0, String arg1, String arg2) {
+	public void onPrivateMessage(String to, String from, String msg) {
 	}
 
 	public void onQuit(IRCChannel channel, String arg1) {
@@ -142,7 +143,7 @@ public class SimpleAutoResponder extends IRCPlugin implements IRCListener,
 		}
 	}
 
-	@EventHandler
+	@EventHandler(priority = EventPriority.LOWEST)
 	public void onPlayerChat(PlayerChatEvent event) {
 		// Check if the input strings
 		for (String s : input) {
