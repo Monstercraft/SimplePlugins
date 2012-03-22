@@ -65,7 +65,7 @@ public class SimpleLogger extends IRCPlugin {
 			// Sets the formatting type
 			fh.setFormatter(new SimpleFormatter());
 		} catch (SecurityException e) {
-			//debugs the error using monsterirc's debug method
+			// debugs the error using monsterirc's debug method
 			debug(e);
 		} catch (IOException e) {
 			debug(e);
