@@ -41,7 +41,7 @@ public class SimpleSpamHammer extends IRCPlugin implements IRCListener {
 							times.remove(sender);
 							kickAmount.remove(sender);
 							mode(channels.get(sender), sender, "-q");
-							sendMessage(channels.get(sender), sender
+							sendMessageToChannel(channels.get(sender), sender
 									+ " you have been unmuted!");
 							channels.remove(sender);
 						}
@@ -57,7 +57,7 @@ public class SimpleSpamHammer extends IRCPlugin implements IRCListener {
 			if (kickAmount.containsKey(sender)) {
 				kickAmount.put(sender, kickAmount.get(sender) + 1);
 				if (kickAmount.get(sender) == 5) {
-					sendMessage(
+					sendMessageToChannel(
 							channel,
 							sender
 									+ " be quiet for the next 60 seconds or you will be muted!");
@@ -66,7 +66,8 @@ public class SimpleSpamHammer extends IRCPlugin implements IRCListener {
 				}
 				if (kickAmount.get(sender) == 10) {
 					mode(channel.getChannel(), sender, "+q");
-					sendMessage(channel, sender + " you have been muted for the next 60 seconds!");
+					sendMessageToChannel(channel, sender
+							+ " you have been muted for the next 60 seconds!");
 				}
 			} else {
 				kickAmount.put(sender, 0);

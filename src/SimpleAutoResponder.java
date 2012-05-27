@@ -108,7 +108,7 @@ public class SimpleAutoResponder extends IRCPlugin implements IRCListener,
 				// check for the output message
 				if (output.get(index) != null) {
 					// send the output message
-					sendMessage(c, output.get(index));
+					sendMessageToChannel(c, output.get(index));
 				} else {
 					// The output message was null, something in the config was
 					// wrong.
