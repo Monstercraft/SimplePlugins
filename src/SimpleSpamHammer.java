@@ -94,9 +94,10 @@ public class SimpleSpamHammer extends IRCPlugin implements IRCListener {
 	}
 
 	@Override
-	public void onKick(IRCChannel channel, String user, String reason) {
+	public void onKick(IRCChannel channel, String kicker, String user,
+			String reason) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override

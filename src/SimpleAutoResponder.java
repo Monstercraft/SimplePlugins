@@ -94,7 +94,8 @@ public class SimpleAutoResponder extends IRCPlugin implements IRCListener,
 	}
 
 	@Override
-	public void onKick(IRCChannel arg0, String arg1, String arg2) {
+	public void onKick(IRCChannel channel, String kicker, String user,
+			String reason) {
 	}
 
 	@Override
