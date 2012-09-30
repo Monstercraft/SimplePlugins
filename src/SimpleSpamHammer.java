@@ -125,12 +125,6 @@ public class SimpleSpamHammer extends IRCPlugin implements IRCListener {
 
 	}
 
-	@Override
-	public void onJoin(IRCChannel channel, String user) {
-		// TODO Auto-generated method stub
-
-	}
-
 	/**
 	 * Timer
 	 */
@@ -205,4 +199,16 @@ public class SimpleSpamHammer extends IRCPlugin implements IRCListener {
 			return this.end;
 		}
 	}
+
+    @Override
+    public void onJoin(IRCChannel channel, String user, String message) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void onNickChange(IRCChannel channel, String oldNick, String newNick) {
+        // TODO Auto-generated method stub
+        
+    }
 }
